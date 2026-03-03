@@ -7,7 +7,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include "common.h"
 #include <stdlib.h>
+
 
 // Function prototypes
 int get_pid_by_name(const char *proc_name);

@@ -3,13 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 #include "common.h"
+#include "history.h"
 #include "network.h"
-
-// External declarations (Implemented in history.c)
-extern void add_to_history(const char *cmd);
-extern void save_history();
-extern void load_history();
-extern void print_history(char *result);
 
 /**
  * parse_command: Converts user string input into the protocol Enum IDs.

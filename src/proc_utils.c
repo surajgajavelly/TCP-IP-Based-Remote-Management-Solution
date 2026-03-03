@@ -109,7 +109,8 @@ void get_cpu_usage(int pid, char *result)
         close(fd);
         sscanf(buffer, "%*d %*s %*c %*d %*d %*d %*d %*d %*u %*u %*u %*u %*u %lu %lu", &utime, &stime);
         total_time2 = utime + stime;
-        sprintf(result, "CPU Delta Ticks: %ld", (total_time2 - total_time1));
+        snprintf(result, MAX_BUF, "CPU Delta Ticks: %ld", (total_time2 - total_time1));
+
     }
 }
 
@@ -117,7 +118,7 @@ void get_cpu_usage(int pid, char *result)
 void get_fds(int pid, char *result)
 {
     char path[512];
-    sprintf(path, "/proc/%d/fd", pid);
+    snprintf(path, sizeof(path), "/proc/%d/fd", pid);
     DIR *dir = opendir(path);
     int count = 0;
     if (!dir)
@@ -132,14 +133,14 @@ void get_fds(int pid, char *result)
         if (entry->d_name[0] != '.') count++;
     }
     closedir(dir);
-    sprintf(result, "Open File Descriptors: %d", count);
+    snprintf(result, MAX_BUF, "Open File Descriptors: %d", count);
 }
 
 // 5. Ports (Scan for socket links)
 void get_ports(int pid, char *result)
 {
     char path[512], link_path[1024];
-    sprintf(path, "/proc/%d/fd", pid);
+    snprintf(path, sizeof(path), "/proc/%d/fd", pid);
 
     DIR *dir = opendir(path);
     int found = 0;

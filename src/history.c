@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "history.h"
 #include "common.h"
 
 static char history[MAX_HISTORY][MAX_BUF];
@@ -41,6 +42,8 @@ void load_history() {
     {
         return;
     }
+
+    history_count = 0;
     char line[MAX_BUF];
     while (fgets(line, MAX_BUF, f) && history_count < MAX_HISTORY)
     {
