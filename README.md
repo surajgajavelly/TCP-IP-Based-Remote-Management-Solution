@@ -1,4 +1,7 @@
 # Sentinel Proc: TCP/IP Remote Management Solution (V1.0)
+
+![tests](TCP-Remote.gif)
+
 A high-performance, concurrent remote diagnostic agent designed for Linux-based systems. This solution allows system administrators to monitor real-time process telemetry—including memory consumption, CPU load, and network resources—across a network using a custom-engineered binary protocol.
 
 Instead of relying on heavy shell-based tools, this project interfaces directly with the **Linux Kernel via the ProcFS (`/proc`) virtual filesystem** using low-level system calls, ensuring a minimal resource footprint on the target system.
